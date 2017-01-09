@@ -20,7 +20,10 @@ RUN echo "downloading JDK from Oracle site..." && \
     rm /opt/jdk.rpm && \
     yum clean all
 
+ENV DOCKER_VERSION 1.12.3
+
 RUN curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh && \
     source /root/.dvm/dvm.sh && \
-    dvm install 1.12.3
-RUN echo "source /root/.dvm/dvm.sh" >> /etc/profile.d/dvm.sh
+    dvm install $DOCKER_VERSION
+RUN echo "source /root/.dvm/dvm.sh" >> /root/.bashrc
+#    echo "dvm use $DOCKER_VERSION" >> /root/.bashrc
