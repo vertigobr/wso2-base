@@ -19,3 +19,8 @@ RUN echo "downloading JDK from Oracle site..." && \
     yum localinstall /opt/jdk.rpm -y && \
     rm /opt/jdk.rpm && \
     yum clean all
+
+RUN curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh && \
+    source /root/.dvm/dvm.sh && \
+    dvm install 1.12.3
+RUN echo "source /root/.dvm/dvm.sh" >> /etc/profile.d/dvm.sh
